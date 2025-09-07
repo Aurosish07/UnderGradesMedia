@@ -2826,3 +2826,19 @@ body {
         line-height: 16px;
     }
 }
+/* Sticky sidebar for >1200px screens */
+@media (min-width: 1201px) { 
+    .about-content-wrapper {
+        align-items: flex-start;
+    }
+
+    .about-sidebar {
+        position: sticky;
+        top: 0;
+    }
+
+    .about-navigation {
+        position: static;
+        top: auto;
+    }
+}
