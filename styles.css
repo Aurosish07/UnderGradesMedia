@@ -2980,118 +2980,220 @@ body {
 
 /* ...existing code... */
 
+/* ...existing code... */
+
+/* CASE STUDY SECTION - ENHANCED COOL STYLE */
+/* --- Case Study Section: Classic Brand Colors --- */
 .case-study-section {
-    padding: 90px 0 70px 0;
-    background: linear-gradient(180deg, #fff 60%, #f8f9fb 100%);
+    padding: 100px 0 80px 0;
+    background: linear-gradient(120deg, #fff 70%, #fff7f4 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.case-study-section::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #FA5C40 0%, #fff0 70%);
+    opacity: 0.10;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.case-study-section::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, #FA5C40 0%, #fff0 70%);
+    opacity: 0.07;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .case-study-main-title {
     font-family: 'Lustria', serif;
-    font-size: 2.8rem;
+    font-size: 2.9rem;
     font-weight: 400;
-    color: #0d3272;
-    letter-spacing: -1px;
-    margin-bottom: 2.5rem;
+    color: #FA5C40;
+    letter-spacing: -1.5px;
+    margin-bottom: 2.8rem;
     text-align: center;
-    text-shadow: 0 2px 12px rgba(250, 92, 64, 0.06);
+    text-shadow: 0 4px 24px rgba(250, 92, 64, 0.10);
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg, #FA5C40 10%, #FFB199 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .case-study-list {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 3.8rem;
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .case-study-card {
-    background: linear-gradient(120deg, #fff 80%, #f1f5fa 100%);
-    border-radius: 22px;
-    box-shadow: 0 8px 32px rgba(13, 50, 114, 0.09), 0 1.5px 8px rgba(250, 92, 64, 0.04);
-    padding: 2.5rem 2.5rem 2rem 2.5rem;
-    border-left: 6px solid #FA5C40;
+    background: linear-gradient(120deg, #fff 80%, #fff7f4 100%);
+    border-radius: 26px;
+    box-shadow: 0 8px 32px rgba(13, 50, 114, 0.09), 0 2px 12px rgba(250, 92, 64, 0.07);
+    padding: 2.8rem 2.8rem 2.2rem 2.8rem;
+    border-left: 7px solid #FA5C40;
     position: relative;
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .case-study-card:hover {
-    box-shadow: 0 16px 48px rgba(13, 50, 114, 0.13), 0 2px 12px rgba(250, 92, 64, 0.08);
-    border-left: 6px solid #2563eb;
+    box-shadow: 0 16px 48px rgba(13, 50, 114, 0.13), 0 4px 18px rgba(250, 92, 64, 0.13);
+    border-left: 7px solid #FA5C40;
+    transform: translateY(-4px) scale(1.012);
+}
+
+.case-study-card::before,
+.case-study-card::after {
+    display: none;
 }
 
 .case-study-title {
     font-family: 'Lustria', serif;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 400;
     color: #FA5C40;
-    margin-bottom: .25rem;
+    margin-bottom: .18rem;
     letter-spacing: -0.5px;
+    position: relative;
+    z-index: 2;
 }
 
 .case-study-subtext {
-    color: #2563eb;
+    color: #0D3272;
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 1.08rem;
+    font-size: 1.13rem;
     font-weight: 500;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.3rem;
     letter-spacing: 0.01em;
+    z-index: 2;
+    position: relative;
 }
 
 .case-study-overview {
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.4rem;
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 1.13rem;
+    font-size: 1.15rem;
     color: #222;
-    line-height: 1.6;
+    line-height: 1.7;
+    z-index: 2;
+    position: relative;
 }
 
 .case-study-overview strong {
     color: #0d3272;
-    font-weight: 600;
-    font-size: 1.08em;
+    font-weight: 700;
+    font-size: 1.09em;
 }
 
 .case-study-comparison {
     display: flex;
-    gap: 2.2rem;
-    margin-bottom: 1.3rem;
+    gap: 2.5rem;
+    margin-bottom: 1.4rem;
+    z-index: 2;
+    position: relative;
 }
 
 .comparison-column {
     flex: 1;
-    background: #f8f9fb;
-    border-radius: 12px;
-    padding: 1.1rem 1.2rem;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.04);
-    border: 1.5px solid #f1f5fa;
+    background: #fff7f4;
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    box-shadow: 0 2px 12px rgba(250, 92, 64, 0.04);
+    border: 1.5px solid #fff0e8;
+    position: relative;
+    min-width: 0;
 }
 
 .comparison-column h4 {
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 1.05rem;
-    color: #0d3272;
-    font-weight: 600;
+    font-size: 1.09rem;
+    color: #FA5C40;
+    font-weight: 700;
     margin-bottom: .5rem;
     letter-spacing: 0.01em;
 }
 
 .comparison-column ul {
-    margin: 0 0 0 1.1rem;
+    margin: 0 0 0 0.5rem;
     padding: 0;
     color: #3b3b3b;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.01rem;
+    line-height: 1.7;
+}
+
+.comparison-column.challenges ul li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+
+.comparison-column.challenges ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.7em;
+    height: 0.7em;
+    background: linear-gradient(135deg, #FA5C40 60%, #FFB199 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px #fa5c4022;
+    display: inline-block;
+    transform: translateY(-50%);
+}
+
+.comparison-column.after ul li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+
+.comparison-column.after ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.7em;
+    height: 0.7em;
+    background: linear-gradient(135deg, #22c55e 60%, #b9fbc0 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px #22c55e22;
+    display: inline-block;
+    transform: translateY(-50%);
 }
 
 .case-study-impact {
     margin-bottom: 1.2rem;
+    z-index: 2;
+    position: relative;
 }
 
 .case-study-impact h4 {
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.09rem;
     color: #FA5C40;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: .5rem;
     letter-spacing: 0.01em;
 }
@@ -3100,20 +3202,23 @@ body {
     list-style: disc;
     margin-left: 1.5rem;
     color: #0d3272;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.01rem;
+    line-height: 1.7;
+    font-weight: 500;
 }
 
 .case-study-testimonial {
     margin-bottom: 1.2rem;
     font-style: italic;
-    color: #2563eb;
-    background: #f1f5fa;
+    color: #FA5C40;
+    background: linear-gradient(90deg, #fff7f4 80%, #fff0e8 100%);
     border-left: 3px solid #FA5C40;
-    border-radius: 0 10px 10px 0;
-    padding: 1rem 1.5rem;
-    font-size: 1.05rem;
+    border-radius: 0 12px 12px 0;
+    padding: 1.1rem 1.7rem;
+    font-size: 1.09rem;
     position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 8px #fa5c4011;
 }
 
 .case-study-testimonial blockquote {
@@ -3124,48 +3229,57 @@ body {
 .testimonial-author {
     display: block;
     margin-top: .7rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #0d3272;
     font-style: normal;
-    font-size: 0.98rem;
+    font-size: 1rem;
     letter-spacing: 0.01em;
+    opacity: 0.85;
 }
 
 .case-study-conclusion {
     margin-bottom: 1.2rem;
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 1.08rem;
+    font-size: 1.09rem;
     color: #3b3b3b;
+    z-index: 2;
+    position: relative;
 }
 
 .case-study-conclusion strong {
-    color: #2563eb;
-    font-weight: 600;
-    font-size: 1.05em;
+    color: #FA5C40;
+    font-weight: 700;
+    font-size: 1.06em;
 }
 
 .case-study-links {
     margin-top: 0.5rem;
+    z-index: 2;
+    position: relative;
 }
 
 .case-study-links a {
     color: #FA5C40;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Instrument Sans', sans-serif;
     border-bottom: 2px solid #FA5C40;
-    transition: color 0.2s, border-color 0.2s;
-    font-size: 1.05rem;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    font-size: 1.08rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #fa5c4011 60%, #ffb19911 100%);
 }
 
 .case-study-links a:hover {
-    color: #2563eb;
-    border-bottom: 2px solid #2563eb;
+    color: #fff;
+    background: #FA5C40;
+    border-bottom: 2px solid #FA5C40;
 }
 
 @media (max-width: 900px) {
     .case-study-list {
-        gap: 2.2rem;
+        gap: 2.5rem;
     }
 
     .case-study-card {
@@ -3174,7 +3288,7 @@ body {
 
     .case-study-comparison {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
     }
 }
 
@@ -3198,7 +3312,20 @@ body {
     .comparison-column ul {
         font-size: 0.97rem;
     }
+
+    .comparison-column.challenges ul li,
+    .comparison-column.after ul li {
+        padding-left: 1.1em;
+    }
+
+    .comparison-column.challenges ul li::before,
+    .comparison-column.after ul li::before {
+        width: 0.5em;
+        height: 0.5em;
+    }
 }
+
+/* ...existing code... */
 
 /* --- Case Study Section Font & Bullet Enhancements --- */
 .case-study-section,
@@ -3260,13 +3387,84 @@ body {
 
 /* Responsive tweak for bullet alignment */
 @media (max-width: 600px) {
+
     .comparison-column.challenges ul li,
     .comparison-column.after ul li {
         padding-left: 1.1em;
     }
+
     .comparison-column.challenges ul li::before,
     .comparison-column.after ul li::before {
         width: 0.5em;
         height: 0.5em;
+    }
+}
+
+/* --- Case Study Comparison: Icon Bullets & Colorful Backgrounds --- */
+.comparison-column.challenges {
+    background: #fff3f3;
+    /* soft red */
+    border: 1.5px solid #ffe0e0;
+}
+.comparison-column.after {
+    background: #f3fff7;
+    /* soft green */
+    border: 1.5px solid #d6ffe6;
+}
+.comparison-column.challenges ul li {
+    position: relative;
+    padding-left: 2em;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+.comparison-column.challenges ul li::before {
+    content: '';
+    position: absolute;
+    left: 0.2em;
+    top: 0.6em;
+    width: 1.1em;
+    height: 1.1em;
+    background: none;
+    display: inline-block;
+    transform: translateY(-50%);
+    /* SVG red cross icon */
+    background-image: url("data:image/svg+xml;utf8,<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='9' cy='9' r='9' fill='%23FA5C40' fill-opacity='0.18'/><path d='M6 6l6 6M12 6l-6 6' stroke='%23FA5C40' stroke-width='2' stroke-linecap='round'/></svg>");
+    background-size: 1.1em 1.1em;
+    background-repeat: no-repeat;
+}
+.comparison-column.after ul li {
+    position: relative;
+    padding-left: 2em;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+.comparison-column.after ul li::before {
+    content: '';
+    position: absolute;
+    left: 0.2em;
+    top: 0.6em;
+    width: 1.1em;
+    height: 1.1em;
+    background: none;
+    display: inline-block;
+    transform: translateY(-50%);
+    /* SVG green checkmark icon */
+    background-image: url("data:image/svg+xml;utf8,<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='9' cy='9' r='9' fill='%2322c55e' fill-opacity='0.13'/><path d='M5 9.5l3 3 5-5' stroke='%2322c55e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-size: 1.1em 1.1em;
+    background-repeat: no-repeat;
+}
+
+/* Responsive tweak for icon bullets */
+@media (max-width: 600px) {
+    .comparison-column.challenges ul li,
+    .comparison-column.after ul li {
+        padding-left: 1.5em;
+    }
+    .comparison-column.challenges ul li::before,
+    .comparison-column.after ul li::before {
+        width: 0.9em;
+        height: 0.9em;
+        background-size: 0.9em 0.9em;
+        left: 0.1em;
     }
 }
