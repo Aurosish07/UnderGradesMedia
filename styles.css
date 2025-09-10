@@ -567,11 +567,11 @@ body {
 
 .service-overlay-card {
     position: absolute;
-    bottom: -100px;
+    bottom: -200px;
     left: 50%;
     transform: translateX(-50%) translateY(-100px);
-    width: 326px;
-    height: 292px;
+    width: 350px;
+    height: 400px;
     padding: 40px;
     border-radius: 16px;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -588,13 +588,13 @@ body {
 
 .service-overlay-card-small {
     width: 355px;
-    height: 248px;
+    height: 300px;
 }
 
 .card-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap:5px;
     height: 100%;
     position: relative;
 }
@@ -701,11 +701,12 @@ body {
 }
 
 .story-content {
+    max-width: 750px;      /* Reduce width for better readability */
+    margin: 0 auto;        /* Center horizontally */
+    padding: 0 1rem;       /* Add some side padding for mobile */
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    max-width: 900px;
-    margin: 0 auto;
 }
 
 .story-text-block {
@@ -732,14 +733,17 @@ body {
     line-height: 1.3;
     letter-spacing: -0.03em;
     color: rgba(0, 0, 0, 0.65);
-    text-align: left;
+    text-align: left;   /* Change from center to left */
 }
 
 /* Animations */
-@keyframes fadeInUp {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -918,16 +922,6 @@ body {
         transform: translateX(-50%) rotate(360deg) scale(1.2);
         opacity: 0.7;
         filter: blur(40px);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
     }
 }
 
@@ -2775,7 +2769,7 @@ body {
 
 @media (max-width: 480px) {
     .footer-section {
-        padding: 50px 0;
+                             padding: 50px 0;
     }
 
     .footer-container {
@@ -2841,4 +2835,122 @@ body {
         position: static;
         top: auto;
     }
+}
+/* Brands Marquee Section */
+.brands-marquee-section {
+    width: 100%;
+    background: #fff;
+    padding: 4.5rem 0 3rem 0; /* Increased vertical padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.brands-marquee-header {
+    margin-bottom: 2.5rem; /* More space below title */
+    text-align: center;
+}
+
+.brands-marquee-title {
+    font-family: 'Lustria', serif;
+    font-size: 2.5rem; /* Larger title */
+    font-weight: 400;
+    color: #222;
+    letter-spacing: -0.5px;
+}
+
+.brands-marquee-title .accent {
+    color: #FA5C40;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.brands-marquee-track-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1.25rem 0; /* More vertical space for logos */
+}
+
+.brands-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem; /* More space between logos */
+    animation: marquee-scroll 28s linear infinite; /* Slower for bigger logos */
+    will-change: transform;
+}
+
+.brand-logo {
+    height: 72px;   /* Bigger logos */
+    width: 180px;
+    object-fit: contain;
+    filter: grayscale(0.12) brightness(1) contrast(1.08);
+    opacity: 0.92;
+    transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+    border-radius: 12px;
+    background: #f8f8f8;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.brand-logo:hover {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.09);
+    box-shadow: 0 8px 32px rgba(250,92,64,0.10);
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .brands-marquee-title {
+        font-size: 2rem;
+    }
+    .brands-marquee-title .accent {
+        font-size: 2.25rem;
+    }
+    .brands-marquee-track {
+        gap: 2.5rem;
+    }
+    .brand-logo {
+        height: 54px;
+        width: 130px;
+    }
+    .brands-marquee-section {
+        padding: 3rem 0 2rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .brands-marquee-title {
+        font-size: 1.25rem;
+    }
+    .brands-marquee-title .accent {
+        font-size: 1.5rem;
+    }
+    .brands-marquee-track {
+        gap: 1.25rem;
+    }
+    .brand-logo {
+        height: 38px;
+        width: 80px;
+    }
+    .brands-marquee-section {
+        padding: 2rem 0 1.25rem 0;
+    }
+}
+
+/* Add this at the end of your CSS file */
+.accent-normal {
+    color: #FA5C40;
+    font-size: inherit !important;
+    /* font-weight: inherit !important; */
 }
