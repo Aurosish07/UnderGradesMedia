@@ -1,9 +1,9 @@
 // The UnderGrads - Main JavaScript File
-(function() {
+(function () {
     'use strict';
 
     // Wait for DOM to be ready
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         initializeApp();
     });
 
@@ -43,8 +43,8 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
                     observer.unobserve(entry.target); // Only animate once
@@ -54,13 +54,13 @@
 
         // Observe story text blocks
         const storyBlocks = document.querySelectorAll('.story-text-block');
-        storyBlocks.forEach(function(block) {
+        storyBlocks.forEach(function (block) {
             observer.observe(block);
         });
 
         // Observe service items
         const serviceItems = document.querySelectorAll('.service-item');
-        serviceItems.forEach(function(item) {
+        serviceItems.forEach(function (item) {
             observer.observe(item);
         });
 
@@ -74,20 +74,20 @@
     // Smooth scroll for internal links
     function initializeSmoothScroll() {
         const links = document.querySelectorAll('a[href^="#"]');
-        
-        links.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+
+        links.forEach(function (link) {
+            link.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     e.preventDefault();
-                    
+
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    
+
                     // Update URL without triggering page jump
                     history.pushState(null, null, targetId);
                 }
@@ -97,7 +97,7 @@
 
     // Handle page load states
     function handlePageLoad() {
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Animate sun drop-in
             var sun = document.querySelector('.glow-background');
             if (sun) {
@@ -112,13 +112,13 @@
             // Animate subtitle after a short delay
             var subtitle = document.querySelector('.hero-subtitle');
             if (subtitle) {
-                setTimeout(function() {
+                setTimeout(function () {
                     subtitle.classList.add('animate-in');
                 }, 400); // 0.4s delay for subtitle
             }
             // Remove any loading classes once page is fully loaded
             document.body.classList.add('loaded');
-            
+
             // Trigger any load-dependent animations
             const heroContent = document.querySelector('.hero-content');
             if (heroContent) {
@@ -133,16 +133,16 @@
             const viewportWidth = window.innerWidth;
             const baseWidth = 1200;
             const scale = Math.min(Math.max(viewportWidth / baseWidth, 0.7), 1.2);
-            
+
             document.documentElement.style.setProperty('--text-scale', scale);
         }
 
         // Initial call
         updateTextScale();
-        
+
         // Update on resize with debouncing
         let resizeTimer;
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(updateTextScale, 150);
         });
@@ -160,12 +160,12 @@
         }
 
         const glowElements = document.querySelectorAll('.sun-glow-primary, .sun-glow-secondary');
-        
-        window.addEventListener('scroll', function() {
+
+        window.addEventListener('scroll', function () {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.3;
-            
-            glowElements.forEach(function(element) {
+
+            glowElements.forEach(function (element) {
                 element.style.transform = `translateX(-50%) translateY(${rate}px)`;
             });
         });
@@ -174,8 +174,8 @@
     // Error handling for missing elements
     function handleMissingElements() {
         const criticalElements = ['.hero-section', '.story-section'];
-        
-        criticalElements.forEach(function(selector) {
+
+        criticalElements.forEach(function (selector) {
             if (!document.querySelector(selector)) {
                 console.warn(`Critical element missing: ${selector}`);
             }
@@ -186,11 +186,11 @@
     function logPerformanceMetrics() {
         if (window.performance && performance.mark) {
             performance.mark('app-initialized');
-            
-            window.addEventListener('load', function() {
+
+            window.addEventListener('load', function () {
                 performance.mark('page-loaded');
-                
-                setTimeout(function() {
+
+                setTimeout(function () {
                     const navigation = performance.getEntriesByType('navigation')[0];
                     if (navigation) {
                         console.log('Page load metrics:', {
@@ -238,11 +238,11 @@
             rootMargin: '-20% 0px -20% 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     // Remove active class from all nav links with smooth transition
-                    navLinks.forEach(function(link) {
+                    navLinks.forEach(function (link) {
                         link.classList.remove('active');
                         link.style.transform = '';
                     });
@@ -253,7 +253,7 @@
                         activeLink.classList.add('active');
 
                         // Add a subtle pulse effect
-                        setTimeout(function() {
+                        setTimeout(function () {
                             if (activeLink.classList.contains('active')) {
                                 activeLink.style.transform = 'translateX(4px) scale(1.02)';
                             }
@@ -263,7 +263,7 @@
             });
         }, observerOptions);
 
-        sections.forEach(function(section) {
+        sections.forEach(function (section) {
             observer.observe(section);
         });
     }
@@ -282,13 +282,13 @@
                 isScrolling = true;
 
                 // Add scrolling effects to text
-                textElements.forEach(function(element) {
+                textElements.forEach(function (element) {
                     element.classList.add('text-blur-on-scroll');
                     element.classList.add('scrolling');
                 });
 
                 // Enhance navigation during scroll
-                navLinks.forEach(function(link) {
+                navLinks.forEach(function (link) {
                     if (!link.classList.contains('active')) {
                         link.style.opacity = '0.6';
                     }
@@ -300,17 +300,17 @@
             isScrolling = false;
 
             // Remove scrolling effects
-            textElements.forEach(function(element) {
+            textElements.forEach(function (element) {
                 element.classList.remove('scrolling');
             });
 
             // Restore navigation opacity
-            navLinks.forEach(function(link) {
+            navLinks.forEach(function (link) {
                 link.style.opacity = '';
             });
         }
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             handleScrollStart();
 
             clearTimeout(scrollTimer);
@@ -321,7 +321,7 @@
 
         // Enhanced scroll direction detection for additional effects
         let scrollDirection = 'up';
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const currentScrollY = window.scrollY;
             scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
 
@@ -350,7 +350,7 @@
         }
 
         function updateParallax() {
-            serviceCards.forEach(function(card) {
+            serviceCards.forEach(function (card) {
                 const rect = card.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
 
@@ -378,7 +378,7 @@
             if (!ticking) {
                 requestAnimationFrame(updateParallax);
                 ticking = true;
-                setTimeout(function() {
+                setTimeout(function () {
                     ticking = false;
                 }, 16); // ~60fps
             }
@@ -401,12 +401,12 @@
 
         function switchToSection(targetSection) {
             // Remove active class from all nav links
-            navLinks.forEach(function(link) {
+            navLinks.forEach(function (link) {
                 link.classList.remove('active');
             });
 
             // Hide all content sections
-            contentSections.forEach(function(section) {
+            contentSections.forEach(function (section) {
                 section.classList.remove('active');
             });
 
@@ -424,8 +424,8 @@
         }
 
         // Add click event listeners to nav links
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
 
                 const targetSection = this.getAttribute('data-section');
@@ -441,13 +441,13 @@
             });
 
             // Add hover effects
-            link.addEventListener('mouseenter', function() {
+            link.addEventListener('mouseenter', function () {
                 if (!this.classList.contains('active')) {
                     this.style.transform = 'translateX(4px)';
                 }
             });
 
-            link.addEventListener('mouseleave', function() {
+            link.addEventListener('mouseleave', function () {
                 if (!this.classList.contains('active')) {
                     this.style.transform = '';
                 }
@@ -458,8 +458,8 @@
         switchToSection('about');
 
         // Add keyboard navigation support
-        navLinks.forEach(function(link, index) {
-            link.addEventListener('keydown', function(e) {
+        navLinks.forEach(function (link, index) {
+            link.addEventListener('keydown', function (e) {
                 let targetIndex = index;
 
                 if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -482,5 +482,31 @@
 
         // Note: Experience section navigation is handled by the main initializeNavigationActiveStates function
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = Array.from(document.querySelectorAll('section[id]'));
+
+        function onScroll() {
+            const scrollPos = window.scrollY + 120; // adjust offset for fixed nav
+            let currentSectionId = '';
+            for (const section of sections) {
+                if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+                    currentSectionId = section.id;
+                    break;
+                }
+            }
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + currentSectionId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
 
 })();
