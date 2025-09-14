@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Building YELO Into a Modern Coworking & Community Brand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lustria&family=Instrument+Sans:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fff;
+            --text: rgba(0, 0, 0, .8);
+            --text-dark: #2E3238;
+            --text-muted: #5C6470;
+            --grad-orange: #FAA940;
+            --grad-red: #DE3A3A;
+            --accent: #F8AC79;
+            --radius-24: 24px;
+            --brand-orange: #FA5C40;
+            --brand-blue: #0D3272;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .nowrap {
+            white-space: nowrap
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            overflow: hidden;
+            display: grid;
+        }
+
+        .container {
+            width: min(1152px, 100%);
+            margin-inline: auto;
+            padding-inline: clamp(16px, 5vw, 32px);
+            padding-top: clamp(80px, 12vh, 160px);
+            padding-bottom: clamp(48px, 10vh, 96px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            max-width: min(864px, 100%);
+            margin-bottom: clamp(24px, 6vh, 80px);
+        }
+
+        .title {
+            font-family: Lustria, serif;
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            font-size: clamp(32px, 5.2vw, 60px);
+            margin: 0 0 24px 0;
+            color: rgba(0, 0, 0, .80);
+        }
+
+        .subtitle {
+            font-family: Inter, sans-serif;
+            font-size: clamp(16px, 2.2vw, 21px);
+            line-height: clamp(24px, 4.2vw, 33.6px);
+            letter-spacing: -0.01em;
+            margin: 0;
+            color: rgba(0, 0, 0, .80);
+            max-width: 771px;
+        }
+
+        /* Background blurs */
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .blur {
+            position: absolute;
+            border-radius: 500px;
+            filter: blur(50px);
+            transform: rotate(59.8deg);
+        }
+
+        .blur--main {
+            width: 1097px;
+            height: 1097px;
+            left: 210px;
+            top: -875px;
+            background: linear-gradient(90deg, var(--grad-orange) 0%, var(--grad-red) 100%);
+            filter: blur(100px);
+        }
+
+        .blur--secondary {
+            width: 823px;
+            height: 823px;
+            left: 397px;
+            top: -688px;
+            background: transparent;
+        }
+
+        .blur--overlay {
+            width: 823px;
+            height: 823px;
+            left: 397px;
+            top: -688px;
+            background: var(--accent);
+            mix-blend-mode: overlay;
+        }
+
+        .card {
+            width: 100%;
+            height: clamp(280px, 55vw, 640px);
+            border-radius: clamp(16px, 2vw, var(--radius-24));
+            overflow: hidden;
+            background: transparent;
+            box-shadow:
+                0 0.602px 2.288px -0.917px rgba(0, 0, 0, .08),
+                0 2.289px 8.696px -1.833px rgba(0, 0, 0, .08),
+                0 10px 38px -2.75px rgba(0, 0, 0, .07);
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .card.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--bg);
+            padding: clamp(48px, 8vh, 120px) 0;
+        }
+
+        .portfolio__container {
+            width: min(1280px, 100%);
+            margin-inline: auto;
+            padding-inline: clamp(16px, 5vw, 64px);
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: clamp(32px, 6vw, 64px);
+            align-items: start;
+        }
+
+        /* Company Info Sidebar */
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(24px, 4vw, 32px);
+            max-width: 311px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .label {
+            font-family: Inter, sans-serif;
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .value {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 400;
+            color: var(--text-dark);
+            line-height: 1.4;
+            letter-spacing: -0.32px;
+        }
+
+        /* Portfolio Content */
+        .portfolio-content {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(32px, 6vh, 48px);
+            max-width: 777px;
+        }
+
+        .content-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .content-section.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .section-title {
+            font-family: Lustria, serif;
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--text);
+            margin: 0 0 clamp(16px, 3vh, 24px) 0;
+            text-transform: capitalize;
+        }
+
+        .section-text {
+            font-family: Inter, sans-serif;
+            font-size: clamp(16px, 2.2vw, 21px);
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.21px;
+            color: var(--text);
+            margin: 0;
+        }
+
+        /* Added comprehensive case study styling */
+        /* Case Study Section Styles */
+        .case-study-section {
+            padding: 100px 0 80px 0;
+            background: linear-gradient(120deg, #fff 70%, #fff7f4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-section::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            left: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #FA5C40 0%, #fff0 70%);
+            opacity: 0.10;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .case-study-section::after {
+            content: "";
+            position: absolute;
+            bottom: -100px;
+            right: -60px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #FA5C40 0%, #fff0 70%);
+            opacity: 0.07;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .case-study-card {
+            background: linear-gradient(120deg, #fff 80%, #fff7f4 100%);
+            border-radius: 26px;
+            box-shadow: 0 8px 32px rgba(13, 50, 114, 0.09), 0 2px 12px rgba(250, 92, 64, 0.07);
+            padding: 2.8rem 2.8rem 2.2rem 2.8rem;
+            border-left: 7px solid #FA5C40;
+            position: relative;
+            transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+            overflow: hidden;
+            isolation: isolate;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .case-study-card:hover {
+            box-shadow: 0 16px 48px rgba(13, 50, 114, 0.13), 0 4px 18px rgba(250, 92, 64, 0.13);
+            border-left: 7px solid #FA5C40;
+            transform: translateY(-4px) scale(1.012);
+        }
+
+        .case-study-title {
+            font-family: 'Lustria', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #FA5C40;
+            margin-bottom: .18rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-study-subtext {
+            color: var(--brand-blue);
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.13rem;
+            font-weight: 500;
+            margin-bottom: 1.3rem;
+            letter-spacing: 0.01em;
+            z-index: 2;
+            position: relative;
+            text-align: center;
+        }
+
+        .case-study-overview {
+            margin-bottom: 1.4rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.15rem;
+            color: #222;
+            line-height: 1.7;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-overview strong {
+            color: #0d3272;
+            font-weight: 700;
+            font-size: 1.09em;
+        }
+
+        .case-study-comparison {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 1.4rem;
+            z-index: 2;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .comparison-column {
+            flex: 1;
+            border-radius: 14px;
+            padding: 1.2rem 1.3rem;
+            box-shadow: 0 2px 12px rgba(250, 92, 64, 0.04);
+            position: relative;
+            min-width: 0;
+        }
+
+        .comparison-column.challenges {
+            background: #fff3f3;
+            border: 1.5px solid #ffe0e0;
+        }
+
+        .comparison-column.after {
+            background: #f3fff7;
+            border: 1.5px solid #d6ffe6;
+        }
+
+        .comparison-column h4 {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.09rem;
+            color: var(--brand-orange);
+            font-weight: 700;
+            margin-bottom: .5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .comparison-column ul {
+            list-style: none;
+            margin: 0 0 0 0.5rem;
+            padding: 0;
+            color: #3b3b3b;
+            font-size: 1.01rem;
+            line-height: 1.7;
+        }
+
+        .comparison-column.challenges ul li,
+        .comparison-column.after ul li {
+            position: relative;
+            padding-left: 2em;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+
+        .comparison-column.challenges ul li::before {
+            content: '';
+            position: absolute;
+            left: 0.2em;
+            top: 0.6em;
+            width: 1.1em;
+            height: 1.1em;
+            background: none;
+            display: inline-block;
+            transform: translateY(-50%);
+            background-image: url("data:image/svg+xml;utf8,<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='9' cy='9' r='9' fill='%23FA5C40' fill-opacity='0.18'/><path d='M6 6l6 6M12 6l-6 6' stroke='%23FA5C40' stroke-width='2' stroke-linecap='round'/></svg>");
+            background-size: 1.1em 1.1em;
+            background-repeat: no-repeat;
+        }
+
+        .comparison-column.after ul li::before {
+            content: '';
+            position: absolute;
+            left: 0.2em;
+            top: 0.6em;
+            width: 1.1em;
+            height: 1.1em;
+            background: none;
+            display: inline-block;
+            transform: translateY(-50%);
+            background-image: url("data:image/svg+xml;utf8,<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='9' cy='9' r='9' fill='%2322c55e' fill-opacity='0.13'/><path d='M5 9.5l3 3 5-5' stroke='%2322c55e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            background-size: 1.1em 1.1em;
+            background-repeat: no-repeat;
+        }
+
+        .case-study-impact {
+            margin-bottom: 1.2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-impact h4 {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.09rem;
+            color: var(--brand-orange);
+            font-weight: 700;
+            margin-bottom: .5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .case-study-impact ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            color: var(--brand-blue);
+            font-size: 1.01rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .case-study-testimonial {
+            margin-bottom: 1.2rem;
+            font-style: italic;
+            color: #FA5C40;
+            background: linear-gradient(90deg, #fff7f4 80%, #fff0e8 100%);
+            border-left: 3px solid #FA5C40;
+            border-radius: 0 12px 12px 0;
+            padding: 1.1rem 1.7rem;
+            font-size: 1.09rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 8px #fa5c4011;
+        }
+
+        .case-study-testimonial blockquote {
+            margin: 0;
+            padding: 0;
+        }
+
+        .testimonial-author {
+            display: block;
+            margin-top: .7rem;
+            font-weight: 700;
+            color: #0d3272;
+            font-style: normal;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            opacity: 0.85;
+        }
+
+        .case-study-conclusion {
+            margin-bottom: 1.2rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.09rem;
+            color: #3b3b3b;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-conclusion strong {
+            color: #FA5C40;
+            font-weight: 700;
+            font-size: 1.06em;
+        }
+
+        .case-study-links {
+            margin-top: 0.5rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-links a {
+            color: #FA5C40;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Instrument Sans', sans-serif;
+            border-bottom: 2px solid #FA5C40;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+            font-size: 1.08rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #fa5c4011 60%, #ffb19911 100%);
+        }
+
+        .case-study-links a:hover {
+            color: #fff;
+            background: #FA5C40;
+            border-bottom: 2px solid #FA5C40;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .portfolio__container {
+                grid-template-columns: 1fr;
+                gap: clamp(24px, 6vh, 48px);
+            }
+
+            .company-info {
+                max-width: 100%;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: clamp(16px, 4vw, 24px);
+            }
+
+            .case-study-comparison {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .blur--main {
+                left: -120px;
+                top: -820px;
+                transform: rotate(60deg) scale(0.95);
+            }
+
+            .blur--secondary,
+            .blur--overlay {
+                left: -60px;
+                top: -680px;
+            }
+
+            .company-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-study-card {
+                padding: 1.1rem 0.7rem 1rem 0.7rem;
+                border-radius: 13px;
+            }
+
+            .case-study-title {
+                font-size: 1.1rem;
+            }
+
+            .comparison-column.challenges ul li,
+            .comparison-column.after ul li {
+                padding-left: 1.5em;
+            }
+
+            .comparison-column.challenges ul li::before,
+            .comparison-column.after ul li::before {
+                width: 0.9em;
+                height: 0.9em;
+                background-size: 0.9em 0.9em;
+                left: 0.1em;
+            }
+        }
+
+        /* Styling for the full-width sections */
+        .full-width-sections {
+            width: 100%;
+            background: linear-gradient(to bottom, #fff 0%, #fff7f4 100%);
+            padding: 40px 0 80px;
+        }
+
+        .full-width-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 5vw, 32px);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(250, 169, 64, 0.15), transparent);
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .full-width-sections {
+                padding: 20px 0 60px;
+            }
+
+            .section-divider {
+                margin: 30px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="hero__bg" aria-hidden="true">
+            <span class="blur blur--main"></span>
+            <span class="blur blur--secondary"></span>
+            <span class="blur blur--overlay"></span>
+        </div>
+        <div class="container">
+            <header class="content">
+                <h1 class="title">
+                    Building YELO Into a Modern Coworking & Community Brand
+                </h1>
+                <p class="subtitle">
+                    From Poultry Legacy to a Modern Digital Brand
+                </p>
+            </header>
+            <figure class="card" id="hero-card">
+                <img src="https://api.builder.io/api/v1/image/assets/TEMP/52bdeff98b2782f7606140c28958727bc519639b?width=2304"
+                    alt="YELO App and Branding" loading="eager" />
+            </figure>
+        </div>
+    </main>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="portfolio__container">
+            <aside class="company-info">
+                <div class="info-item">
+                    <span class="label">Industry</span>
+                    <span class="value">Bike Service / Tech</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Location</span>
+                    <span class="value">Bhubaneswar, Odisha</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Founded</span>
+                    <span class="value">2022</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Company size</span>
+                    <span class="value">20+</span>
+                </div>
+            </aside>
+            <div class="portfolio-content">
+                <!-- Only keep Overview inside portfolio-content -->
+                <div class="content-section" id="overview">
+                    <h2 class="section-title">Overview</h2>
+                    <div class="section-text">
+                        <p>YELO is a bike service app in Bhubaneswar, Odisha, offering doorstep two-wheeler repair and
+                            maintenance. Customers can book services, track repairs, and pay online through the app and
+                            website.<br>
+                            From oil changes and brake repairs to full bike inspections, YELO ensures affordable,
+                            hassle-free servicing at home with certified mechanics.</p>
+                        <p>By partnering with UnderGrads Media, YELO built a strong brand identity, website, app, and
+                            digital marketing strategy, transforming into a trusted on-demand bike service platform for
+                            Odisha’s riders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New full-width sections container -->
+    <section class="full-width-sections">
+        <div class="full-width-container">
+            <!-- Comparison Section -->
+            <div class="content-section" id="comparison">
+                <h2 class="section-title">The Challenge & Solution</h2>
+                <div class="case-study-comparison">
+                    <div class="comparison-column challenges">
+                        <h4>Challenges Before Collaboration</h4>
+                        <ul>
+                            <li><span style="font-weight: 600;">Limited Digital Presence:</span> The company lacked an
+                                official website and mobile app for customer bookings and interactions.</li>
+                            <li><span style="font-weight: 600;">Undefined Brand Identity:</span> The company needed a
+                                coherent brand strategy, including a logo, color scheme, and consistent messaging.</li>
+                            <li><span style="font-weight: 600;">Minimal Marketing Strategy:</span> The company had no
+                                established social media presence or targeted marketing campaigns.</li>
+                            <li><span style="font-weight: 600;">Inefficient Operations:</span> Manual booking systems
+                                caused scheduling conflicts and reduced customer satisfaction.</li>
+                            <li><span style="font-weight: 600;">Recruitment Issues:</span> The company lacked
+                                standardized procedures for hiring qualified mechanics and support staff.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-column after">
+                        <h4>After Our Role & Execution</h4>
+                        <ul>
+                            <li><span style="font-weight: 600;">Website & App Development:</span> Built a responsive
+                                website yelo.co.in with service listings, pricing, and booking features & Developed a
+                                mobile app for seamless service booking, status tracking, and payments.</li>
+                            <li><span style="font-weight: 600;">Branding & Identity:</span> Created the brand name
+                                "YELO" and crafted a compelling tagline & Designed a modern logo and established
+                                comprehensive brand guidelines with color palettes and typography</li>
+                            <li><span style="font-weight: 600;">Digital Marketing & Social Media Management:</span>
+                                Built YELO's presence across Instagram, Facebook, and LinkedIn & Created and managed
+                                content calendars, engaging posts, and targeted ad campaigns to grow customer base.</li>
+                            <li><span style="font-weight: 600;">Advertising & Promotions:</span> Created promotional
+                                materials including banners and flyers & Launched targeted local advertising campaigns
+                                to boost brand awareness</li>
+                            <li><span style="font-weight: 600;">Photography & Videography:</span> Produced professional
+                                photo content featuring services, customer testimonials, and behind-the-scenes
+                                operations.</li>
+                            <li><span style="font-weight: 600;">Recruitment & HR Support:</span> Created clear hiring
+                                procedures and job descriptions for mechanics and support staff & Supported the
+                                recruitment process to ensure qualified professional hires.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Impact & Results Section -->
+            <!-- Replace the Impact & Results section in casestudy2.html -->
+            <div class="case-study-impact"
+                style="background: linear-gradient(90deg, #fff 80%, #fff7f4 100%); border-radius: 16px; padding: 2rem 1.5rem 1.5rem 1.5rem; box-shadow: 0 5px 20px rgba(250,92,64,0.06); margin-bottom: 2rem; border-left: 4px solid #FA5C40;">
+                <h4
+                    style="font-family: 'Instrument Sans', sans-serif; font-size: 1.25rem; color: #FA5C40; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 0.01em; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.5rem;">📈</span> Impact & Results
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem;">
+                    <div
+                        style="background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(250,92,64,0.05); display: flex; align-items: flex-start; gap: 12px;">
+                        <span
+                            style="background: rgba(250,92,64,0.10); width: 38px; height: 38px; border-radius: 19px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <strong style="color:#0d3272;">Brand Recognition</strong><br>
+                            YELO became one of Odisha's first recognized doorstep bike servicing apps, gaining 5,00+ app
+                            downloads within 3 months.
+                        </div>
+                    </div>
+                    <div
+                        style="background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(250,92,64,0.05); display: flex; align-items: flex-start; gap: 12px;">
+                        <span
+                            style="background: rgba(250,92,64,0.10); width: 38px; height: 38px; border-radius: 19px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <strong style="color:#0d3272;">Customer Growth</strong><br>
+                            Built a strong base of 2,000+ recurring users, with week-on-week service bookings increasing
+                            by 35%
+                        </div>
+                    </div>
+                    <div
+                        style="background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(250,92,64,0.05); display: flex; align-items: flex-start; gap: 12px;">
+                        <span
+                            style="background: rgba(250,92,64,0.10); width: 38px; height: 38px; border-radius: 19px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <strong style="color:#0d3272;">Digital Presence</strong><br>
+                            Achieved 4x higher engagement on Instagram and a 60% increase in organic traffic through SEO
+                            content
+                        </div>
+                    </div>
+                    <div
+                        style="background: #fff; border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(250,92,64,0.05); display: flex; align-items: flex-start; gap: 12px;">
+                        <span
+                            style="background: rgba(250,92,64,0.10); width: 38px; height: 38px; border-radius: 19px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path
+                                    d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <strong style="color:#0d3272;">Market Acceptance</strong><br>
+                            Successfully positioned on-demand bike servicing as a trusted solution in a tier-2 city like
+                            Bhubaneswar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study-testimonial">
+                <blockquote>
+                    “UnderGrads Media transformed our vision into reality. Their comprehensive approach to branding and
+                    digital development has been instrumental in YELO's growth”
+                    <span class="testimonial-author">— Abhijit Dhal, Founder YELO</span>
+                </blockquote>
+            </div>
+
+            <div class="case-study-conclusion">
+                <strong>Conclusion:</strong>
+                <p>The YELO project demonstrates UnderGrads Media’s expertise in building community-first brands. By
+                    combining branding, digital marketing, and community engagement, we helped YELO create awareness,
+                    build connections, and become a hub for professionals in Bhubaneswar.<br>
+                    Today, YELO continues to thrive as a coworking and collaboration brand, powered by UnderGrads
+                    Media’s creative and strategic support.
+                </p>
+            </div>
+            <div class="case-study-links">
+                <a href="https://yelo.co.in" target="_blank">Visit Website</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Animation system for reveal effects
+        (function () {
+            const heroCard = document.getElementById('hero-card');
+            const sections = document.querySelectorAll('.content-section');
+
+            // Hero card reveal
+            const showHero = () => heroCard.classList.add('in');
+
+            // Section reveals with staggered timing
+            const showSection = (el, delay = 0) => {
+                setTimeout(() => el.classList.add('in'), delay);
+            };
+
+            if ('IntersectionObserver' in window) {
+                // Hero card observer
+                const heroIO = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            showHero();
+                            heroIO.disconnect();
+                        }
+                    });
+                }, { threshold: .2 });
+                heroIO.observe(heroCard);
+
+                // Portfolio sections observer
+                const sectionIO = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            const index = Array.from(sections).indexOf(e.target);
+                            showSection(e.target, index * 150);
+                        }
+                    });
+                }, { threshold: .3 });
+
+                sections.forEach(section => sectionIO.observe(section));
+            } else {
+                // Fallback for older browsers
+                showHero();
+                sections.forEach((section, i) => showSection(section, i * 200));
+            }
+
+            // Smooth scroll for internal navigation (if needed)
+            document.addEventListener('click', e => {
+                if (e.target.matches('a[href^="#"]')) {
+                    e.preventDefault();
+                    const target = document.querySelector(e.target.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

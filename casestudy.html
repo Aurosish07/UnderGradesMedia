@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transforming Saraas Group into a Modern Brand with Tech, HR & Marketing Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lustria&family=Instrument+Sans:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Keep all existing styles from casestudy.html */
+        :root {
+            --bg: #fff;
+            --text: rgba(0, 0, 0, .8);
+            --text-dark: #2E3238;
+            --text-muted: #5C6470;
+            --grad-orange: #FAA940;
+            --grad-red: #DE3A3A;
+            --accent: #F8AC79;
+            --radius-24: 24px;
+            --brand-orange: #FA5C40;
+            --brand-blue: #0D3272;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .nowrap {
+            white-space: nowrap
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            overflow: hidden;
+            display: grid;
+        }
+
+        .container {
+            width: min(1152px, 100%);
+            margin-inline: auto;
+            padding-inline: clamp(16px, 5vw, 32px);
+            padding-top: clamp(80px, 12vh, 160px);
+            padding-bottom: clamp(48px, 10vh, 96px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            max-width: min(864px, 100%);
+            margin-bottom: clamp(24px, 6vh, 80px);
+        }
+
+        .title {
+            font-family: Lustria, serif;
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            font-size: clamp(32px, 5.2vw, 60px);
+            margin: 0 0 24px 0;
+            color: rgba(0, 0, 0, .80);
+        }
+
+        .subtitle {
+            font-family: Inter, sans-serif;
+            font-size: clamp(16px, 2.2vw, 21px);
+            line-height: clamp(24px, 4.2vw, 33.6px);
+            letter-spacing: -0.01em;
+            margin: 0;
+            color: rgba(0, 0, 0, .80);
+            max-width: 771px;
+        }
+
+        /* Background blurs */
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .blur {
+            position: absolute;
+            border-radius: 500px;
+            filter: blur(50px);
+            transform: rotate(59.8deg);
+        }
+
+        .blur--main {
+            width: 1097px;
+            height: 1097px;
+            left: 210px;
+            top: -875px;
+            background: linear-gradient(90deg, var(--grad-orange) 0%, var(--grad-red) 100%);
+            filter: blur(100px);
+        }
+
+        .blur--secondary {
+            width: 823px;
+            height: 823px;
+            left: 397px;
+            top: -688px;
+            background: transparent;
+        }
+
+        .blur--overlay {
+            width: 823px;
+            height: 823px;
+            left: 397px;
+            top: -688px;
+            background: var(--accent);
+            mix-blend-mode: overlay;
+        }
+
+        .card {
+            width: 100%;
+            height: clamp(280px, 55vw, 640px);
+            border-radius: clamp(16px, 2vw, var(--radius-24));
+            overflow: hidden;
+            background: transparent;
+            box-shadow:
+                0 0.602px 2.288px -0.917px rgba(0, 0, 0, .08),
+                0 2.289px 8.696px -1.833px rgba(0, 0, 0, .08),
+                0 10px 38px -2.75px rgba(0, 0, 0, .07);
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .card.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--bg);
+            padding: clamp(48px, 8vh, 120px) 0;
+        }
+
+        .portfolio__container {
+            width: min(1280px, 100%);
+            margin-inline: auto;
+            padding-inline: clamp(16px, 5vw, 64px);
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: clamp(32px, 6vw, 64px);
+            align-items: start;
+        }
+
+        /* Company Info Sidebar */
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(24px, 4vw, 32px);
+            max-width: 311px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .label {
+            font-family: Inter, sans-serif;
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .value {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 400;
+            color: var(--text-dark);
+            line-height: 1.4;
+            letter-spacing: -0.32px;
+        }
+
+        /* Portfolio Content */
+        .portfolio-content {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(32px, 6vh, 48px);
+            max-width: 777px;
+        }
+
+        .content-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .content-section.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .section-title {
+            font-family: Lustria, serif;
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--text);
+            margin: 0 0 clamp(16px, 3vh, 24px) 0;
+            text-transform: capitalize;
+        }
+
+        .section-text {
+            font-family: Inter, sans-serif;
+            font-size: clamp(16px, 2.2vw, 21px);
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.21px;
+            color: var(--text);
+            margin: 0;
+        }
+
+        /* Added comprehensive case study styling */
+        /* Case Study Section Styles */
+        .case-study-section {
+            padding: 100px 0 80px 0;
+            background: linear-gradient(120deg, #fff 70%, #fff7f4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-section::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            left: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #FA5C40 0%, #fff0 70%);
+            opacity: 0.10;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .case-study-section::after {
+            content: "";
+            position: absolute;
+            bottom: -100px;
+            right: -60px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #FA5C40 0%, #fff0 70%);
+            opacity: 0.07;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .case-study-card {
+            background: linear-gradient(120deg, #fff 80%, #fff7f4 100%);
+            border-radius: 26px;
+            box-shadow: 0 8px 32px rgba(13, 50, 114, 0.09), 0 2px 12px rgba(250, 92, 64, 0.07);
+            padding: 2.8rem 2.8rem 2.2rem 2.8rem;
+            border-left: 7px solid #FA5C40;
+            position: relative;
+            transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+            overflow: hidden;
+            isolation: isolate;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .case-study-card:hover {
+            box-shadow: 0 16px 48px rgba(13, 50, 114, 0.13), 0 4px 18px rgba(250, 92, 64, 0.13);
+            border-left: 7px solid #FA5C40;
+            transform: translateY(-4px) scale(1.012);
+        }
+
+        .case-study-title {
+            font-family: 'Lustria', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #FA5C40;
+            margin-bottom: .18rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-study-subtext {
+            color: var(--brand-blue);
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.13rem;
+            font-weight: 500;
+            margin-bottom: 1.3rem;
+            letter-spacing: 0.01em;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-overview {
+            margin-bottom: 1.4rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.15rem;
+            color: #222;
+            line-height: 1.7;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-overview strong {
+            color: #0d3272;
+            font-weight: 700;
+            font-size: 1.09em;
+        }
+
+        .case-study-comparison {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 1.4rem;
+            z-index: 2;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .comparison-column {
+            flex: 1;
+            border-radius: 14px;
+            padding: 1.2rem 1.3rem;
+            box-shadow: 0 2px 12px rgba(250, 92, 64, 0.04);
+            position: relative;
+            min-width: 0;
+        }
+
+        .comparison-column.challenges {
+            background: #fff3f3;
+            border: 1.5px solid #ffe0e0;
+        }
+
+        .comparison-column.after {
+            background: #f3fff7;
+            border: 1.5px solid #d6ffe6;
+        }
+
+        .comparison-column h4 {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.09rem;
+            color: var(--brand-orange);
+            font-weight: 700;
+            margin-bottom: .5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .comparison-column ul {
+            list-style: none;
+            margin: 0 0 0 0.5rem;
+            padding: 0;
+            color: #3b3b3b;
+            font-size: 1.01rem;
+            line-height: 1.7;
+        }
+
+        .comparison-column.challenges ul li,
+        .comparison-column.after ul li {
+            position: relative;
+            padding-left: 2em;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+
+        .comparison-column.challenges ul li::before {
+            content: '';
+            position: absolute;
+            left: 0.2em;
+            top: 0.6em;
+            width: 1.1em;
+            height: 1.1em;
+            background: none;
+            display: inline-block;
+            transform: translateY(-50%);
+            background-image: url("data:image/svg+xml;utf8,<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='9' cy='9' r='9' fill='%23FA5C40' fill-opacity='0.18'/><path d='M6 6l6 6M12 6l-6 6' stroke='%23FA5C40' stroke-width='2' stroke-linecap='round'/></svg>");
+            background-size: 1.1em 1.1em;
+            background-repeat: no-repeat;
+        }
+
+        .comparison-column.after ul li::before {
+            content: '';
+            position: absolute;
+            left: 0.2em;
+            top: 0.6em;
+            width: 1.1em;
+            height: 1.1em;
+            background: none;
+            display: inline-block;
+            transform: translateY(-50%);
+            background-image: url("data:image/svg+xml;utf8,<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='9' cy='9' r='9' fill='%2322c55e' fill-opacity='0.13'/><path d='M5 9.5l3 3 5-5' stroke='%2322c55e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            background-size: 1.1em 1.1em;
+            background-repeat: no-repeat;
+        }
+
+        .case-study-impact {
+            margin-bottom: 1.2rem;
+            z-index: 2;
+            position: relative;
+            background: linear-gradient(90deg, #fff 80%, #fff7f4 100%);
+            border-radius: 16px;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            box-shadow: 0 5px 20px rgba(250,92,64,0.06);
+            border-left: 4px solid #FA5C40;
+        }
+
+        .case-study-impact h4 {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.25rem;
+            color: #FA5C40;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+            gap: 1.2rem;
+        }
+
+        .impact-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(250,92,64,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .impact-icon {
+            background: rgba(250,92,64,0.10);
+            width: 38px;
+            height: 38px;
+            border-radius: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .impact-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .impact-content strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #0d3272;
+            font-size: 1.05rem;
+        }
+
+        .case-study-testimonial {
+            margin-bottom: 1.2rem;
+            font-style: italic;
+            color: #FA5C40;
+            background: linear-gradient(90deg, #fff7f4 80%, #fff0e8 100%);
+            border-left: 3px solid #FA5C40;
+            border-radius: 0 12px 12px 0;
+            padding: 1.1rem 1.7rem;
+            font-size: 1.09rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 8px #fa5c4011;
+        }
+
+        .case-study-testimonial blockquote {
+            margin: 0;
+            padding: 0;
+        }
+
+        .testimonial-author {
+            display: block;
+            margin-top: .7rem;
+            font-weight: 700;
+            color: #0d3272;
+            font-style: normal;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            opacity: 0.85;
+        }
+
+        .case-study-conclusion {
+            margin-bottom: 1.2rem;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.09rem;
+            color: #3b3b3b;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-conclusion strong {
+            color: #FA5C40;
+            font-weight: 700;
+            font-size: 1.06em;
+        }
+
+        .case-study-links {
+            margin-top: 0.5rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-links a {
+            color: #FA5C40;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Instrument Sans', sans-serif;
+            border-bottom: 2px solid #FA5C40;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+            font-size: 1.08rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #fa5c4011 60%, #ffb19911 100%);
+        }
+
+        .case-study-links a:hover {
+            color: #fff;
+            background: #FA5C40;
+            border-bottom: 2px solid #FA5C40;
+        }
+
+        /* Styling for the full-width sections */
+        .full-width-sections {
+            width: 100%;
+            background: linear-gradient(to bottom, #fff 0%, #fff7f4 100%);
+            padding: 40px 0 80px;
+        }
+
+        .full-width-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 5vw, 32px);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(250, 169, 64, 0.15), transparent);
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .portfolio__container {
+                grid-template-columns: 1fr;
+                gap: clamp(24px, 6vh, 48px);
+            }
+
+            .company-info {
+                max-width: 100%;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: clamp(16px, 4vw, 24px);
+            }
+
+            .case-study-comparison {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .blur--main {
+                left: -120px;
+                top: -820px;
+                transform: rotate(60deg) scale(0.95);
+            }
+
+            .blur--secondary,
+            .blur--overlay {
+                left: -60px;
+                top: -680px;
+            }
+
+            .company-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-study-card {
+                padding: 1.1rem 0.7rem 1rem 0.7rem;
+                border-radius: 13px;
+            }
+
+            .case-study-title {
+                font-size: 1.1rem;
+            }
+
+            .comparison-column.challenges ul li,
+            .comparison-column.after ul li {
+                padding-left: 1.5em;
+            }
+
+            .comparison-column.challenges ul li::before,
+            .comparison-column.after ul li::before {
+                width: 0.9em;
+                height: 0.9em;
+                background-size: 0.9em 0.9em;
+                left: 0.1em;
+            }
+
+            .full-width-sections {
+                padding: 20px 0 60px;
+            }
+
+            .section-divider {
+                margin: 30px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="hero__bg" aria-hidden="true">
+            <span class="blur blur--main"></span>
+            <span class="blur blur--secondary"></span>
+            <span class="blur blur--overlay"></span>
+        </div>
+        <div class="container">
+            <header class="content">
+                <h1 class="title">
+                    Transforming Saraas Group into a Modern Brand with Tech, HR & Marketing Support
+                </h1>
+                <p class="subtitle">
+                    From Poultry Legacy to a Modern Digital Brand
+                </p>
+            </header>
+            <figure class="card" id="hero-card">
+                <img src="./media/images/mobilebanking.jpg" alt="Saraas Group Brand Transformation" loading="eager" />
+            </figure>
+        </div>
+    </main>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="portfolio__container">
+            <aside class="company-info">
+                <div class="info-item">
+                    <span class="label">Industry</span>
+                    <span class="value">Poultry / Food</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Location</span>
+                    <span class="value">Odisha</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Experience</span>
+                    <span class="value">15+ years</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Brand</span>
+                    <span class="value">Tender Bites</span>
+                </div>
+            </aside>
+            <div class="portfolio-content">
+                <!-- Only keep Overview inside portfolio-content -->
+                <div class="content-section" id="overview">
+                    <h2 class="section-title">Overview</h2>
+                    <div class="section-text">
+                        <p>Saraas Group, a well-known poultry business in Odisha with 15+ years of experience, wanted to go beyond being just a family-run farm. They aimed to build a modern brand identity, enter new markets, and create a consumer-facing platform (Tender Bites) for fresh chicken and ready-to-cook meals.</p>
+                        <p>To achieve this, they partnered with UnderGrads Media to rebrand their business, build digital platforms (website + app), set up HR systems, and run marketing campaigns that would help them grow faster and reach more customers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New full-width sections container -->
+    <section class="full-width-sections">
+        <div class="full-width-container">
+            <!-- Comparison Section -->
+            <div class="content-section" id="comparison">
+                <h2 class="section-title">The Challenge & Solution</h2>
+                <div class="case-study-comparison">
+                    <div class="comparison-column challenges">
+                        <h4>Challenges Before Collaboration</h4>
+                        <ul>
+                            <li>No established brand identity despite 15+ years of experience</li>
+                            <li>No digital infrastructure (website/app) to support direct-to-consumer operations</li>
+                            <li>Lack professional recruitment processes and No HR policies, leading to 40% staff turnover in a year</li>
+                            <li>Low awareness of Tender Bites as a new consumer-facing brand</li>
+                            <li>Transition hurdles from a traditional setup to a structured, scalable business</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-column after">
+                        <h4>After Our Role & Execution</h4>
+                        <ul>
+                            <li>Branding & Identity</li>
+                            <p>Designed the first-ever corporate logo and professional brand identity for Saraas Group & Established brand voice & positioning for both Saraas and Tender Bites</p>
+                            
+                            <li>Technology – Website & App Development</li>
+                            <p>Built the Saraas Group website to highlight legacy, vision, and business verticals, Designed and launched the Tender Bites app & website for seamless online ordering in just 45 days & Integrated backend order management and customer interface for smooth operations</p>
+                            
+                            <li>HR & Operations</li>
+                            <p>Drafted HR policies to bring structure and compliance into the organization. Handled recruitment of key roles, hiring 10+ skilled professionals to drive expansion</p>
+                            
+                            <li>Marketing & Awareness</li>
+                            <p>Ran social media campaigns to build anticipation before the Tender Bites app launch & Created content strategies that established credibility and trust in local markets</p>
+                            
+                            <li>Long-Term Consulting</li>
+                            <p>Continuous support for decision-making, scaling strategies, and operational problem-solving & Advisory role in expansion planning to Bhubaneswar, Bargarh, and Sambalpur</p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Impact & Results Section -->
+            <div class="case-study-impact">
+                <h4><span style="font-size: 1.5rem;">📈</span> Impact & Results</h4>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/>
+                            </svg>
+                        </div>
+                        <div class="impact-content">
+                            <strong>Brand Transformation</strong>
+                            Saraas Group now has a strong corporate identity and digital presence that reflects their legacy and vision
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-5h10v2H7zm3.3-3.8L8.4 9.3 7 10.7l3.3 3.3L17 7.3l-1.4-1.4z"/>
+                            </svg>
+                        </div>
+                        <div class="impact-content">
+                            <strong>Tender Bites App Launch</strong>
+                            Successfully launched with growing week-on-week customer orders and retention
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                            </svg>
+                        </div>
+                        <div class="impact-content">
+                            <strong>HR Structuring</strong>
+                            Cut hiring delays by 60% with structured HR policies and improved employee retention
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                            </svg>
+                        </div>
+                        <div class="impact-content">
+                            <strong>Market Visibility</strong>
+                            Boosted social media reach by 4x in 90 days with targeted content strategy
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <div class="impact-icon">
+                            <svg width="20" height="20" fill="#FA5C40" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-5h10v2H7zm3.3-3.8L8.4 9.3 7 10.7l3.3 3.3L17 7.3l-1.4-1.4z"/>
+                            </svg>
+                        </div>
+                        <div class="impact-content">
+                            <strong>Expansion-Ready</strong>
+                            Equipped with branding, tech, and HR foundations to scale into new cities and reduced operational costs by ~20% through better digital workflows
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="case-study-testimonial">
+                <blockquote>
+                    "Working with UnderGrads Media helped us redefine our brand presence and streamline our digital and recruitment efforts. Their dedication and timely execution made a significant difference to our public perception."
+                    <span class="testimonial-author">— Sarat Chandra Meher, Director, Saraas Group</span>
+                </blockquote>
+            </div>
+
+            <div class="case-study-conclusion">
+                <strong>Conclusion:</strong>
+                <p>The Saraas Group case study reflects UnderGrads Media's holistic approach, not just consulting but executing across multiple domains. By combining branding, technology, HR, and marketing, we transformed a traditional poultry business into a structured, modern, and digitally empowered brand.
+                Today, Saraas Group and Tender Bites continue to partner with UnderGrads Media as their go-to marketing, tech, and growth partner, confidently scaling into new markets.</p>
+            </div>
+            <div class="case-study-links">
+                <a href="#" target="_blank">Visit Website</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation system for reveal effects
+        (function () {
+            const heroCard = document.getElementById('hero-card');
+            const sections = document.querySelectorAll('.content-section');
+
+            // Hero card reveal
+            const showHero = () => heroCard.classList.add('in');
+
+            // Section reveals with staggered timing
+            const showSection = (el, delay = 0) => {
+                setTimeout(() => el.classList.add('in'), delay);
+            };
+
+            if ('IntersectionObserver' in window) {
+                // Hero card observer
+                const heroIO = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            showHero();
+                            heroIO.disconnect();
+                        }
+                    });
+                }, { threshold: .2 });
+                heroIO.observe(heroCard);
+
+                // Portfolio sections observer
+                const sectionIO = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            const index = Array.from(sections).indexOf(e.target);
+                            showSection(e.target, index * 150);
+                        }
+                    });
+                }, { threshold: .3 });
+
+                sections.forEach(section => sectionIO.observe(section));
+            } else {
+                // Fallback for older browsers
+                showHero();
+                sections.forEach((section, i) => showSection(section, i * 200));
+            }
+
+            // Smooth scroll for internal navigation (if needed)
+            document.addEventListener('click', e => {
+                if (e.target.matches('a[href^="#"]')) {
+                    e.preventDefault();
+                    const target = document.querySelector(e.target.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
