@@ -3834,5 +3834,339 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #25D366;;
+    color: #25D366;
+    ;
+}
+
+
+/* Responsive Styles for Services Section */
+@media screen and (max-width: 1000px) {
+
+    /* General service section adjustments */
+    .services-section .container {
+        padding: 0 20px;
+    }
+
+    /* Change layout from side-by-side to stacked */
+    .service-item {
+        flex-direction: column !important;
+        /* Override the row direction */
+        margin-bottom: 60px;
+    }
+
+    /* Make content take full width */
+    .service-content,
+    .service-visual {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Adjust content order */
+    .service-item-right .service-content {
+        order: 1;
+        /* Put content first on all items */
+    }
+
+    .service-item-right .service-visual {
+        order: 2;
+        /* Put visual second on all items */
+    }
+
+    /* Improve content spacing */
+    .service-info {
+        padding: 0 0 30px 0;
+    }
+
+    .service-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .service-description {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust image container */
+    .service-image-container {
+        height: 250px;
+        margin-bottom: 30px;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .service-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Adjust overlay cards */
+    .service-overlay-card {
+        /* position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: -15px;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); */
+        display: none;
+    }
+
+    /* Improve card content layout */
+    .card-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .card-item {
+        padding: 10px;
+    }
+
+    .card-item span {
+        font-size: 14px;
+    }
+
+    /* Button adjustments for better touch targets */
+    .service-button {
+        padding: 12px 18px;
+        width: 100%;
+        max-width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Additional small screen adjustments */
+    @media screen and (max-width: 600px) {
+        .card-content {
+            grid-template-columns: 1fr;
+            /* Single column on very small screens */
+        }
+
+        .service-title {
+            font-size: 24px;
+        }
+
+        .service-description {
+            font-size: 15px;
+        }
+
+        .service-image-container {
+            height: 200px;
+        }
+    }
+}
+
+
+
+
+
+/* Responsive styles for work section below 1000px */
+@media screen and (max-width: 1000px) {
+    .work-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .work-card {
+        max-width: 100%;
+    }
+
+    .work-card-content {
+        padding: 24px 20px;
+    }
+
+    .work-main-title {
+        font-size: 36px;
+    }
+}
+
+/* Add this to your styles.css file */
+@media screen and (max-width: 550px) {
+
+    /* Make work cards simpler on mobile */
+    .work-card {
+        height: auto;
+        /* Let height be determined by content */
+    }
+
+    /* Always show the card content with clean background */
+    .work-card-content {
+        position: relative;
+        background: white;
+        min-height: 170px;
+        /* Shorter height since no description */
+        padding: 20px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Hide description completely */
+    .work-card-description {
+        display: none;
+    }
+
+    /* Always show title with dark color for readability */
+    .work-card-title {
+        color: #333;
+        opacity: 1;
+        transform: none;
+        margin-bottom: 16px;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    /* Always show button */
+    .case-study-button {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        margin-top: auto;
+        background: #2563eb;
+    }
+
+    /* Adjust overlay for image section only */
+    .work-card-overlay {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Separate image from content */
+    .work-card-image-wrapper {
+        border-radius: 12px 12px 0 0;
+        height: 180px;
+    }
+
+    /* Make the entire card look like two separate elements */
+    .work-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hover effect just scales the card slightly */
+    .work-card:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Remove description-related hover effects */
+    .work-card:hover .work-card-description {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Keep button styling consistent with your design */
+    .work-card:hover .case-study-button {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Extra small screens improvements */
+@media screen and (max-width: 380px) {
+    .work-card-content {
+        min-height: 360px;
+        /* Even more room for very small screens */
+    }
+
+    .work-card-image-wrapper {
+        height: 180px;
+        /* Slightly smaller images on very small screens */
+    }
+
+    .work-main-title {
+        font-size: 24px;
+    }
+}
+
+/* Add this to your styles.css file */
+@media screen and (max-width: 550px) {
+
+    /* Make work cards simpler on mobile */
+    .work-card {
+        height: auto;
+        /* Let height be determined by content */
+    }
+
+    /* Always show the card content with clean background */
+    .work-card-content {
+        position: relative;
+        background: white;
+        min-height: 170px;
+        /* Shorter height since no description */
+        padding: 20px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Hide description completely */
+    .work-card-description {
+        display: none;
+    }
+
+    /* Always show title with dark color for readability */
+    .work-card-title {
+        color: #333;
+        opacity: 1;
+        transform: none;
+        margin-bottom: 16px;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    /* Always show button */
+    .case-study-button {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        margin-top: auto;
+        background: #2563eb;
+    }
+
+    /* Adjust overlay for image section only */
+    .work-card-overlay {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Separate image from content */
+    .work-card-image-wrapper {
+        border-radius: 12px 12px 0 0;
+        height: 180px;
+    }
+
+    /* Make the entire card look like two separate elements */
+    .work-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hover effect just scales the card slightly */
+    .work-card:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Remove description-related hover effects */
+    .work-card:hover .work-card-description {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Keep button styling consistent with your design */
+    .work-card:hover .case-study-button {
+        opacity: 1;
+        transform: none;
+    }
 }
